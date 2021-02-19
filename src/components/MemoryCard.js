@@ -14,7 +14,7 @@ class MemoryCard extends React.Component {
     }
     render() {
         let innerClass = "MemoryCard__inner"
-        if (this.state.isFlipped) {
+        if (this.props.isFlipped) {
             innerClass += ' flipped'
         }
         return (
@@ -25,7 +25,7 @@ class MemoryCard extends React.Component {
                     <div className="MemoryCard__back">
                         <img src="https://www.digitalcrafts.com/img/logo-wrench-white.png" alt="" />
                     </div>
-                    <div className="MemoryCard__front">∆</div>
+                    <div className="MemoryCard__front">{this.props.symbol}</div>
                 </div>
             </div>
 
