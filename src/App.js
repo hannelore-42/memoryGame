@@ -29,6 +29,15 @@ class App extends React.Component {
       pickedCards: []
     }
   }
+  newPickedCards = this.state.pickedCards.concat(cardIndex);
+  newDeck = this.state.deck.map(
+    (card,index) => {
+      if (cardIndex === index) {
+        return cardToFlip
+      }
+      return card;
+    }
+  );
   pickCard(cardIndex) {
     if (this.state.deck[cardIndex].isFlipped) {
       return
@@ -37,11 +46,12 @@ class App extends React.Component {
       ...this.state.deck[cardIndex],
       isFlipped: true
     }
+    this.setState({deck: newDeck, pickedCards: newPickedCards});
   }
   render() {
     const cardsJSX = this.state.deck.map(
       (card, index) => {
-        return (<MemoryCard key={index} symbol={card.symbol} isFlipped={card.isFlipped} />)
+        return (<MemoryCard key={index} pickCard={this.pickCard.bind(this, index)} symbol={card.symbol} isFlipped={card.isFlipped} />)
       }
     );
     return (
