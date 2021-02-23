@@ -45,9 +45,9 @@ class App extends React.Component {
         return card;
       });
     if (newPickedCards.length === 2) {
-      const card1Index: newPickedCards[0];
-      const card2Index: newPickedCards[1];
-      if (card1Index.symbol != newDeck[card2Index].symbol) {
+      const card1Index = newPickedCards[0];
+      const card2Index = newPickedCards[1];
+      if (newDeck[card1Index].symbol != newDeck[card2Index].symbol) {
         setTimeout(() => { this.unflipCards(card1Index, card2Index); 
         }, 1000);
       }
@@ -61,7 +61,7 @@ class App extends React.Component {
       card1.isFlipped = false;
       card2.isFlipped = false;
 
-      const newDeck = this.state.deck.map((card1, index) => {
+      const newDeck = this.state.deck.map((card, index) => {
         if (card1Index === index) {
           return card1;
         }
